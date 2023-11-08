@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request, render_template_string
 import requests
 import markdown
+import os
 
 views = Blueprint("views", __name__)
 
@@ -20,7 +21,7 @@ def home():
 
 
 def generate_bot_response(user_input, model):
-    api_key = "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"
+    api_key = os.environ["OPENAI_API_KEY"]
     url = "https://api.openai.com/v1/chat/completions"
     headers = {
         "Authorization": f"Bearer {api_key}",
